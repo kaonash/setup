@@ -4,6 +4,8 @@ export PATH=/Users/ken.shimizu/Library/Python/2.7/bin:/usr/local/bin:/usr/bin:/b
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/ken.shimizu/.oh-my-zsh
 
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
