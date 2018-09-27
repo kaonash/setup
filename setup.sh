@@ -8,6 +8,7 @@ curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | 
 
 brew install git
 brew install docker
+brew install peco
 brew cask install sourcetree
 brew cask install secure-pipes
 brew cask install karabiner-elements
@@ -18,6 +19,7 @@ brew cask install datagrip
 brew cask install slack
 brew cask install postman
 brew cask install firefox
+brew cask install middleclick
 
 mkdir ~/src
 mkdir ~/src/private
