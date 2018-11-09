@@ -1,10 +1,24 @@
 !/bin/sh
 
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
 -- install zsh
 brew install zsh zsh-autosuggestions zsh-completions zsh-syntax-highlighting colordiff reattach-to-user-namespace tmux
 curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+
+cd ~/src/private
+git clone git@github.com:kaonash/setup.git
+cd ~/src/bizreach
+git clon git@github.com:bizreach/core.git
+
+cp ~/src/private/setup/envfiles/.ideavimrc ~/
+cp ~/src/private/setup/envfiles/.vim* ~/
+cp ~/src/private/setup/envfiles/.zsh* ~/
+
+sudo cp /etc/shells ~/shells.bak
+sudo cp ~/src/private/setup/envfiles/shells /etc/shells
+
+chsh -s /usr/local/bin/zsh
+
+source .zshrc
 
 brew install git
 brew install docker
@@ -20,19 +34,5 @@ brew cask install slack
 brew cask install postman
 brew cask install firefox
 brew cask install middleclick
-
-mkdir ~/src
-mkdir ~/src/private
-mkdir ~/src/bizreach
-
-cd ~/src/private
-git clone git@github.com:kaonash/setup.git
-cd ~/src/bizreach
-git clon git@github.com:bizreach/core.git
-
-cp ~/src/private/setup/envfiles/.ideavimrc ~/
-cp ~/src/private/setup/envfiles/.vim* ~/
-cp ~/src/private/setup/envfiles/.zsh* ~/
-
-source .zshrc
+brew cask install docker
 
