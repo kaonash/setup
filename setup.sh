@@ -18,6 +18,7 @@ sudo cp ~/src/private/setup/envfiles/shells /etc/shells
 
 chsh -s /usr/local/bin/zsh
 
+cd ~/
 source .zshrc
 
 brew install git
