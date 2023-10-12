@@ -168,6 +168,8 @@ if [ -f '/Users/kenshimizu/developer/google-cloud-sdk/path.zsh.inc' ]; then . '/
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/kenshimizu/developer/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/kenshimizu/developer/google-cloud-sdk/completion.zsh.inc'; fi
 
+autoload -U promptinit
+autoload -U colors && colors
 # Git
 autoload -Uz vcs_info
 setopt prompt_subst #プロンプト表示する度に変数を展開
@@ -179,7 +181,11 @@ zstyle ':vcs_info:*' formats "%F{green}[%b]%c%u%f "
 zstyle ':vcs_info:*' actionformats '[%b|%a]'
 precmd(){ vcs_info }
 
-PROMPT="%F{green}%~ ${vcs_info_msg_0_}"
-# RPROMPT='${vcs_info_msg_0_}'"$p_color return:[%?]%{${reset_color}%}"
-RPROMPT=''
+prompt_precmd() {
+  PROMPT="%F{green}%~ ${vcs_info_msg_0_}"
+}
+
+# precmd フックを登録する
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd prompt_precmd
 
