@@ -2,7 +2,7 @@
 export PATH=/Users/ken.shimizu/Library/Python/2.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin:/usr/local/bin:$PATH:$HOME/.nodebrew/current/bin
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/ken.shimizu/.oh-my-zsh
+# export ZSH=/Users/ken.shimizu/.oh-my-zsh
 
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
@@ -64,7 +64,7 @@ plugins=(
   git
 )
 
-source $ZSH/oh-my-zsh.sh
+# source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
@@ -95,6 +95,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ll='ls -la'
+alias g='git'
 
 # 文字コードの指定
 export LANG=ja_JP.UTF-8
@@ -160,3 +161,25 @@ function peco-history-selection() {
 
 zle -N peco-history-selection
 bindkey '^R' peco-history-selection
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/kenshimizu/developer/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/kenshimizu/developer/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/kenshimizu/developer/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/kenshimizu/developer/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Git
+autoload -Uz vcs_info
+setopt prompt_subst #プロンプト表示する度に変数を展開
+
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr "%F{yellow}*"
+zstyle ':vcs_info:git:*' unstagedstr "%F{red}*"
+zstyle ':vcs_info:*' formats "%F{green}[%b]%c%u%f "
+zstyle ':vcs_info:*' actionformats '[%b|%a]'
+precmd(){ vcs_info }
+
+PROMPT="%F{green}%~ ${vcs_info_msg_0_}"
+# RPROMPT='${vcs_info_msg_0_}'"$p_color return:[%?]%{${reset_color}%}"
+RPROMPT=''
+
